@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-7">
+    <h1>Senior Bar Menu</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Drink Name</th>
+          <th class="menu">Price</th>
+          <th class="menu">Add to Cart</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let drink of menu">
+          <td>{{ drink['name'] }}</td>
+          <td class="menu">${{ drink['price'] }}</td>
+          <td class="menu"><button type="button" (click)="AddItem(drink)"><i
+                class="bi bi-plus-square-fill"></i></button>
+          </td>
+          <!-- <td class="menu"><i class="bi bi-plus-square-fill"></i></td> -->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-5">
+    <h2>Current Order</h2>
+    <div class="row">
+      <div class="col w-50">
+        <table class="table">
+          <thead>
+            <tr class="table-dark">
+              <th>Item</th>
+              <th class="menu">Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="table-secondary" *ngFor="let item of cart">
+              <td>{{ item['name'] }}</td>
+              <td class="menu">${{ item['price'] }}</td>
+            </tr>
+            <tr>
+              <td align="right"><b>Sub Total</b></td>
+              <td class="menu"><b>${{ OrderTotal() }}</b></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <button type="button" class="btn btn-primary me-2" (click)="SubmitOrder()">Submit</button>
+<button type="button" class="btn btn-secondary" (click)="ClearOrder()">Clear</button>
+
+  </div>
+</div>

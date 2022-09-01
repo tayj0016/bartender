@@ -1,0 +1,51 @@
+<div class="row">
+  <div class="col-7">
+    <h1>All Orders</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Order #</th>
+          <th class="menu">Drink #</th>
+          <th class="menu">Total $</th>
+          <th class="menu">View</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders; let i = index">
+          <td>{{ i }}</td>
+          <td class="menu">{{ order.length }}</td>
+          <td class="menu">${{ getTotal(order) }}</td>
+          <td class="menu"><button type="button" (click)="ViewOrder(i)"><i class="bi bi-receipt-cutoff"></i></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-5">
+    <h2>Current Order</h2>
+    <div class="row">
+      <div class="col w-50">
+        <table class="table">
+          <thead>
+            <tr class="table-dark">
+              <th>Item</th>
+              <th class="menu">Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="table-secondary" *ngFor="let item of currentOrder">
+              <td>{{ item['name'] }}</td>
+              <td class="menu">${{ item['price'] }}</td>
+            </tr>
+            <tr>
+              <td align="right"><b>Sub Total</b></td>
+              <td class="menu"><b>${{ OrderTotal() }}</b></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <button type="button" class="btn btn-primary me-2" (click)="CompleteOrder()">Complete</button>
+  </div>
+</div>
